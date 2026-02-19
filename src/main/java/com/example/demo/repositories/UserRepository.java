@@ -1,11 +1,11 @@
 package com.example.demo.repositories;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entities.User;
 
-@RepositoryRestResource(path = "usuarios", collectionResourceRel = "usuarios")
-public interface UserRepository extends CrudRepository<User, Long> {
-
+public interface UserRepository extends JpaRepository<User, Long> {
+	Optional<User> findByUsername(String username);
 }
